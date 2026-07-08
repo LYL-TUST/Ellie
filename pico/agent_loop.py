@@ -45,6 +45,7 @@ class AgentLoop:
             task_state.record_attempt()
             agent.run_store.write_task_state(task_state)
             prompt_started_at = time.monotonic()
+            # 组prompt(感知)
             prompt, prompt_metadata = agent._build_prompt_and_metadata(user_message)
             agent.emit_trace(
                 task_state,
