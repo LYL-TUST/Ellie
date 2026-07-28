@@ -1,0 +1,13 @@
+{
+  "attempts": 1,
+  "checkpoint_id": "",
+  "final_answer": "",
+  "last_tool": "",
+  "resume_status": "no-checkpoint",
+  "run_id": "run_20260627-160333-0ddf52",
+  "status": "running",
+  "stop_reason": "",
+  "task_id": "task_20260627-160333-fa8d09",
+  "tool_steps": 0,
+  "user_request": "\u4f60\u597d\uff0c\u4f60\u662f\u8c01"
+}

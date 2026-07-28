@@ -1,5 +1,5 @@
-from pico import FakeModelClient, Pico, SessionStore, WorkspaceContext
-from pico.checkpoint import (
+from ellie import FakeModelClient, Ellie, SessionStore, WorkspaceContext
+from ellie.checkpoint import (
     CHECKPOINT_FULL_VALID_STATUS,
     CHECKPOINT_NONE_STATUS,
     CHECKPOINT_SCHEMA_MISMATCH_STATUS,
@@ -12,8 +12,8 @@ from pico.checkpoint import (
 def build_agent(tmp_path, outputs=None, **kwargs):
     (tmp_path / "README.md").write_text("demo\n", encoding="utf-8")
     workspace = WorkspaceContext.build(tmp_path)
-    store = SessionStore(tmp_path / ".pico" / "sessions")
-    return Pico(
+    store = SessionStore(tmp_path / ".ellie" / "sessions")
+    return Ellie(
         model_client=FakeModelClient(outputs or []),
         workspace=workspace,
         session_store=store,
@@ -57,3 +57,4 @@ def test_evaluate_resume_state_distinguishes_no_checkpoint_full_valid_and_schema
 
     agent.session["checkpoints"]["items"]["ckpt_valid"]["schema_version"] = "old"
     assert evaluate_resume_state(agent)["status"] == CHECKPOINT_SCHEMA_MISMATCH_STATUS
+

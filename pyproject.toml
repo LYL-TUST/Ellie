@@ -3,14 +3,17 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pico"
-version = "0.1.0"
-description = "Small local coding agent for DeepSeek, OpenAI-compatible, Anthropic-compatible, and Ollama models"
+name = "ellie"
+version = "1.0.0"
+description = "Ellie: a personal terminal coding assistant"
 requires-python = ">=3.10"
 dependencies = []
 
 [project.scripts]
-pico = "pico.cli:main"
+ellie = "ellie.cli:main"
+
+[project.optional-dependencies]
+server = ["fastapi", "uvicorn"]
 
 [dependency-groups]
 dev = [
@@ -19,7 +22,7 @@ dev = [
 ]
 
 [tool.setuptools.packages.find]
-include = ["pico*"]
+include = ["ellie*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

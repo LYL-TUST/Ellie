@@ -1,12 +1,12 @@
-from pico import FakeModelClient, Pico, SessionStore, WorkspaceContext
-from pico.agent_loop import AgentLoop
+from ellie import FakeModelClient, Ellie, SessionStore, WorkspaceContext
+from ellie.agent_loop import AgentLoop
 
 
 def build_agent(tmp_path, outputs):
     (tmp_path / "README.md").write_text("demo\n", encoding="utf-8")
     workspace = WorkspaceContext.build(tmp_path)
-    store = SessionStore(tmp_path / ".pico" / "sessions")
-    return Pico(
+    store = SessionStore(tmp_path / ".ellie" / "sessions")
+    return Ellie(
         model_client=FakeModelClient(outputs),
         workspace=workspace,
         session_store=store,
@@ -14,7 +14,7 @@ def build_agent(tmp_path, outputs):
     )
 
 
-def test_agent_loop_runs_same_control_flow_as_pico_ask(tmp_path):
+def test_agent_loop_runs_same_control_flow_as_ellie_ask(tmp_path):
     (tmp_path / "hello.txt").write_text("alpha\n", encoding="utf-8")
     agent = build_agent(
         tmp_path,
@@ -31,7 +31,8 @@ def test_agent_loop_runs_same_control_flow_as_pico_ask(tmp_path):
     assert agent.run_store.report_path(agent.current_task_state.run_id).exists()
 
 
-def test_pico_ask_delegates_to_agent_loop(tmp_path):
+def test_ellie_ask_delegates_to_agent_loop(tmp_path):
     agent = build_agent(tmp_path, ["<final>Facade works.</final>"])
 
     assert agent.ask("Use facade") == "Facade works."
+

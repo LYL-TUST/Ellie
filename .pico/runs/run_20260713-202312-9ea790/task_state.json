@@ -1,0 +1,13 @@
+{
+  "attempts": 1,
+  "checkpoint_id": "",
+  "final_answer": "",
+  "last_tool": "",
+  "resume_status": "no-checkpoint",
+  "run_id": "run_20260713-202312-9ea790",
+  "status": "running",
+  "stop_reason": "",
+  "task_id": "task_20260713-202312-5795f7",
+  "tool_steps": 0,
+  "user_request": "\u5199\u4e00\u4e2ahello world\u7684python\u4ee3\u7801"
+}

@@ -1,10 +1,10 @@
 from pathlib import Path
 
-from pico.tool_context import ToolContext
-from pico.tools import build_tool_registry, tool_delegate, tool_read_file
+from ellie.tool_context import ToolContext
+from ellie.tools import build_tool_registry, tool_delegate, tool_read_file
 
 
-def test_tool_context_supports_file_tools_without_full_pico(tmp_path):
+def test_tool_context_supports_file_tools_without_full_Ellie(tmp_path):
     (tmp_path / "sample.txt").write_text("alpha\n", encoding="utf-8")
     context = ToolContext(
         root=tmp_path,
@@ -52,3 +52,4 @@ def test_build_tool_registry_binds_runners_to_tool_context(tmp_path):
 
     assert "read_file" in tools
     assert "delegate" not in tools
+

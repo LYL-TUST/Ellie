@@ -1,0 +1,254 @@
+{
+  "id": "20260713-111439-380112",
+  "created_at": "2026-07-13T03:14:39.100689+00:00",
+  "workspace_root": "E:\\agent-projects\\pico",
+  "history": [
+    {
+      "role": "user",
+      "content": "\u5199\u4e00\u4e2ahello world\u7684python\u4ee3\u7801",
+      "created_at": "2026-07-13T03:14:39.104491+00:00"
+    },
+    {
+      "role": "tool",
+      "name": "write_file",
+      "args": {
+        "path": "hello_world.py",
+        "content": "print(\"Hello, World!\")"
+      },
+      "content": "wrote hello_world.py (22 chars)",
+      "created_at": "2026-07-13T03:16:43.392494+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "\u5df2\u4e3a\u60a8\u521b\u5efa\u4e00\u4e2ahello_world.py\u6587\u4ef6\uff0c\u5185\u5bb9\u5982\u4e0b\uff1a\n\n```python\nprint(\"Hello, World!\")\n```\n\n\u60a8\u53ef\u4ee5\u8fd0\u884c\u6b64\u6587\u4ef6\u6765\u67e5\u770b\u8f93\u51fa\u3002",
+      "created_at": "2026-07-13T03:16:44.199099+00:00"
+    }
+  ],
+  "memory": {
+    "working": {
+      "task_summary": "\u5199\u4e00\u4e2ahello world\u7684python\u4ee3\u7801",
+      "recent_files": [
+        "hello_world.py"
+      ]
+    },
+    "episodic_notes": [],
+    "file_summaries": {},
+    "task": "\u5199\u4e00\u4e2ahello world\u7684python\u4ee3\u7801",
+    "files": [
+      "hello_world.py"
+    ],
+    "notes": [],
+    "next_note_index": 0,
+    "durable_topics": []
+  },
+  "checkpoints": {
+    "current_id": "ckpt_d410944b",
+    "items": {
+      "ckpt_4eefdc89": {
+        "checkpoint_id": "ckpt_4eefdc89",
+        "parent_checkpoint_id": "",
+        "schema_version": "phase1-v1",
+        "created_at": "2026-07-13T03:16:43.398975+00:00",
+        "current_goal": "\u5199\u4e00\u4e2ahello world\u7684python\u4ee3\u7801",
+        "completed": [],
+        "excluded": [],
+        "current_blocker": "",
+        "next_step": "Decide the next action after write_file.",
+        "key_files": [
+          {
+            "path": "hello_world.py",
+            "freshness": "cf603e7740f7f7cbf211c7b240f8426c0bf602353290cdb3c9a52adbb0dfaec1"
+          }
+        ],
+        "freshness": {
+          "hello_world.py": "cf603e7740f7f7cbf211c7b240f8426c0bf602353290cdb3c9a52adbb0dfaec1"
+        },
+        "summary": "tool_executed: \u5199\u4e00\u4e2ahello world\u7684python\u4ee3\u7801",
+        "runtime_identity": {
+          "session_id": "20260713-111439-380112",
+          "cwd": "E:\\agent-projects\\pico",
+          "model": "Qwen/Qwen2.5-7B-Instruct-AWQ",
+          "model_client": "VLLMModelClient",
+          "approval_policy": "ask",
+          "read_only": false,
+          "max_steps": 6,
+          "max_new_tokens": 512,
+          "feature_flags": {
+            "memory": true,
+            "relevant_memory": true,
+            "context_reduction": true,
+            "prompt_cache": true
+          },
+          "shell_env_allowlist": [
+            "HOME",
+            "LANG",
+            "LC_ALL",
+            "LC_CTYPE",
+            "LOGNAME",
+            "PATH",
+            "PWD",
+            "SHELL",
+            "TERM",
+            "TMPDIR",
+            "TMP",
+            "TEMP",
+            "USER"
+          ],
+          "workspace_fingerprint": "2d0bbe1a84d2da184ec962a42cfd71283661eeb1f99cb8129519d0d6845e662c",
+          "tool_signature": "4426765ffaaf28349778456b4696f3dae2f5ff87eb4b74ad4e8c4e86ee0437fb"
+        }
+      },
+      "ckpt_031be3f4": {
+        "checkpoint_id": "ckpt_031be3f4",
+        "parent_checkpoint_id": "ckpt_4eefdc89",
+        "schema_version": "phase1-v1",
+        "created_at": "2026-07-13T03:16:43.675398+00:00",
+        "current_goal": "\u5199\u4e00\u4e2ahello world\u7684python\u4ee3\u7801",
+        "completed": [],
+        "excluded": [],
+        "current_blocker": "",
+        "next_step": "Decide the next action after write_file.",
+        "key_files": [
+          {
+            "path": "hello_world.py",
+            "freshness": "cf603e7740f7f7cbf211c7b240f8426c0bf602353290cdb3c9a52adbb0dfaec1"
+          }
+        ],
+        "freshness": {
+          "hello_world.py": "cf603e7740f7f7cbf211c7b240f8426c0bf602353290cdb3c9a52adbb0dfaec1"
+        },
+        "summary": "workspace_mismatch: \u5199\u4e00\u4e2ahello world\u7684python\u4ee3\u7801",
+        "runtime_identity": {
+          "session_id": "20260713-111439-380112",
+          "cwd": "E:\\agent-projects\\pico",
+          "model": "Qwen/Qwen2.5-7B-Instruct-AWQ",
+          "model_client": "VLLMModelClient",
+          "approval_policy": "ask",
+          "read_only": false,
+          "max_steps": 6,
+          "max_new_tokens": 512,
+          "feature_flags": {
+            "memory": true,
+            "relevant_memory": true,
+            "context_reduction": true,
+            "prompt_cache": true
+          },
+          "shell_env_allowlist": [
+            "HOME",
+            "LANG",
+            "LC_ALL",
+            "LC_CTYPE",
+            "LOGNAME",
+            "PATH",
+            "PWD",
+            "SHELL",
+            "TERM",
+            "TMPDIR",
+            "TMP",
+            "TEMP",
+            "USER"
+          ],
+          "workspace_fingerprint": "3f4b3c3706eff80473a5a2588807a7eecc206f03403b074b47dba1de6510c72c",
+          "tool_signature": "4426765ffaaf28349778456b4696f3dae2f5ff87eb4b74ad4e8c4e86ee0437fb"
+        }
+      },
+      "ckpt_d410944b": {
+        "checkpoint_id": "ckpt_d410944b",
+        "parent_checkpoint_id": "ckpt_031be3f4",
+        "schema_version": "phase1-v1",
+        "created_at": "2026-07-13T03:16:44.208921+00:00",
+        "current_goal": "\u5199\u4e00\u4e2ahello world\u7684python\u4ee3\u7801",
+        "completed": [
+          "\u5df2\u4e3a\u60a8\u521b\u5efa\u4e00\u4e2ahello_world.py\u6587\u4ef6\uff0c\u5185\u5bb9\u5982\u4e0b\uff1a\n\n```python\nprint(\"Hello, World!\")\n```\n\n\u60a8\u53ef\u4ee5\u8fd0\u884c\u6b64\u6587\u4ef6\u6765\u67e5\u770b\u8f93\u51fa\u3002"
+        ],
+        "excluded": [],
+        "current_blocker": "",
+        "next_step": "No next step recorded.",
+        "key_files": [
+          {
+            "path": "hello_world.py",
+            "freshness": "cf603e7740f7f7cbf211c7b240f8426c0bf602353290cdb3c9a52adbb0dfaec1"
+          }
+        ],
+        "freshness": {
+          "hello_world.py": "cf603e7740f7f7cbf211c7b240f8426c0bf602353290cdb3c9a52adbb0dfaec1"
+        },
+        "summary": "run_finished: \u5199\u4e00\u4e2ahello world\u7684python\u4ee3\u7801",
+        "runtime_identity": {
+          "session_id": "20260713-111439-380112",
+          "cwd": "E:\\agent-projects\\pico",
+          "model": "Qwen/Qwen2.5-7B-Instruct-AWQ",
+          "model_client": "VLLMModelClient",
+          "approval_policy": "ask",
+          "read_only": false,
+          "max_steps": 6,
+          "max_new_tokens": 512,
+          "feature_flags": {
+            "memory": true,
+            "relevant_memory": true,
+            "context_reduction": true,
+            "prompt_cache": true
+          },
+          "shell_env_allowlist": [
+            "HOME",
+            "LANG",
+            "LC_ALL",
+            "LC_CTYPE",
+            "LOGNAME",
+            "PATH",
+            "PWD",
+            "SHELL",
+            "TERM",
+            "TMPDIR",
+            "TMP",
+            "TEMP",
+            "USER"
+          ],
+          "workspace_fingerprint": "3f4b3c3706eff80473a5a2588807a7eecc206f03403b074b47dba1de6510c72c",
+          "tool_signature": "4426765ffaaf28349778456b4696f3dae2f5ff87eb4b74ad4e8c4e86ee0437fb"
+        }
+      }
+    }
+  },
+  "runtime_identity": {
+    "session_id": "20260713-111439-380112",
+    "cwd": "E:\\agent-projects\\pico",
+    "model": "Qwen/Qwen2.5-7B-Instruct-AWQ",
+    "model_client": "VLLMModelClient",
+    "approval_policy": "ask",
+    "read_only": false,
+    "max_steps": 6,
+    "max_new_tokens": 512,
+    "feature_flags": {
+      "memory": true,
+      "relevant_memory": true,
+      "context_reduction": true,
+      "prompt_cache": true
+    },
+    "shell_env_allowlist": [
+      "HOME",
+      "LANG",
+      "LC_ALL",
+      "LC_CTYPE",
+      "LOGNAME",
+      "PATH",
+      "PWD",
+      "SHELL",
+      "TERM",
+      "TMPDIR",
+      "TMP",
+      "TEMP",
+      "USER"
+    ],
+    "workspace_fingerprint": "3f4b3c3706eff80473a5a2588807a7eecc206f03403b074b47dba1de6510c72c",
+    "tool_signature": "4426765ffaaf28349778456b4696f3dae2f5ff87eb4b74ad4e8c4e86ee0437fb"
+  },
+  "resume_state": {
+    "status": "workspace-mismatch",
+    "stale_paths": [],
+    "runtime_identity_mismatch_fields": [
+      "workspace_fingerprint"
+    ],
+    "stale_summary_invalidations": 0
+  }
+}

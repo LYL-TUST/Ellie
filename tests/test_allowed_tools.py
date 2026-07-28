@@ -2,15 +2,15 @@ import json
 
 import pytest
 
-from pico import FakeModelClient, Pico, SessionStore, WorkspaceContext
-from pico.evaluation.evaluator import BenchmarkEvaluator, validate_benchmark
+from ellie import FakeModelClient, Ellie, SessionStore, WorkspaceContext
+from ellie.evaluation.evaluator import BenchmarkEvaluator, validate_benchmark
 
 
 def build_agent(tmp_path, allowed_tools=None):
     (tmp_path / "README.md").write_text("demo\n", encoding="utf-8")
     workspace = WorkspaceContext.build(tmp_path)
-    store = SessionStore(tmp_path / ".pico" / "sessions")
-    return Pico(
+    store = SessionStore(tmp_path / ".ellie" / "sessions")
+    return Ellie(
         model_client=FakeModelClient(["<final>Done.</final>"]),
         workspace=workspace,
         session_store=store,
@@ -106,3 +106,4 @@ def test_benchmark_evaluator_applies_allowed_tools_to_runtime_prompt(tmp_path):
     assert row["status"] == "pass"
     assert "- read_file(" in captured_clients[0].prompts[0]
     assert "- run_shell(" not in captured_clients[0].prompts[0]
+

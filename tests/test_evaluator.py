@@ -4,7 +4,7 @@ from collections import Counter
 
 import pytest
 
-from pico.evaluation.evaluator import (
+from ellie.evaluation.evaluator import (
     BenchmarkEvaluator,
     load_benchmark,
     run_harness_regression_v2,
@@ -225,3 +225,4 @@ def test_summarize_rows_counts_failure_categories():
         "budget_exceeded": 1,
         "verifier_failed": 1,
     }
+

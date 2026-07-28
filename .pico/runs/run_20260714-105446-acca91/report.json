@@ -1,0 +1,150 @@
+{
+  "attempts": 7,
+  "checkpoint_id": "ckpt_a2651234",
+  "durable_promotions": [],
+  "durable_rejections": [],
+  "durable_superseded": [],
+  "final_answer": "Stopped after reaching the step limit without a final answer.",
+  "prompt_metadata": {
+    "budget_reductions": [],
+    "cache_hit": false,
+    "cached_tokens": 0,
+    "current_request": {
+      "raw_chars": 54,
+      "rendered_chars": 54,
+      "section_chars": 76,
+      "text": "\u5206\u6790\u5f53\u524d\u9879\u76ee\u76ee\u5f55\uff0c\u627e\u51fa\u6240\u6709\u7684Python\u6587\u4ef6\uff0c\u603b\u7ed3\u6bcf\u4e2a\u6587\u4ef6\u91cc\u5206\u522b\u5199\u4e86\u4ec0\u4e48\u529f\u80fd\uff0c\u5e76\u751f\u6210\u4e00\u4efdmarkdown\u62a5\u544a"
+    },
+    "history": {
+      "collapsed_duplicate_reads": 0,
+      "older_entries_count": 0,
+      "raw_chars": 1206,
+      "rendered_chars": 1206,
+      "reused_file_summary_count": 0,
+      "summarized_tool_count": 0
+    },
+    "history_chars": 1194,
+    "input_tokens": 1549,
+    "memory_chars": 148,
+    "output_tokens": 130,
+    "prefix_changed": false,
+    "prefix_chars": 4975,
+    "prefix_hash": "7af7cf293dc1029e10566bd69ca5d58db86f209f3ab13957c31dd257e8bc2a30",
+    "prompt_budget_chars": 12000,
+    "prompt_cache_key": "7af7cf293dc1029e10566bd69ca5d58db86f209f3ab13957c31dd257e8bc2a30",
+    "prompt_cache_supported": false,
+    "prompt_chars": 5061,
+    "prompt_over_budget": false,
+    "recent_commits": 5,
+    "reduction_order": [
+      "relevant_memory",
+      "history",
+      "memory",
+      "prefix"
+    ],
+    "relevant_memory": {
+      "limit": 3,
+      "raw_chars": 23,
+      "rendered_chars": 23,
+      "rendered_count": 0,
+      "rendered_notes": [],
+      "selected_count": 0,
+      "selected_durable_count": 0,
+      "selected_kinds": [],
+      "selected_notes": [],
+      "selected_sources": []
+    },
+    "request_chars": 54,
+    "resume_status": "full-valid",
+    "runtime_identity_mismatch_fields": [],
+    "secret_env_count": 6,
+    "secret_env_names": [
+      "LANGSMITH_API_KEY",
+      "PICO_DEEPSEEK_API_KEY",
+      "PICO_VLLM_API_KEY",
+      "SILICONFLOW_API_KEY",
+      "SPARK_API_KEY",
+      "SPARK_API_SECRET"
+    ],
+    "section_budgets": {
+      "current_request": null,
+      "history": 5200,
+      "memory": 1600,
+      "prefix": 3600,
+      "relevant_memory": 1200
+    },
+    "section_order": [
+      "prefix",
+      "memory",
+      "relevant_memory",
+      "history",
+      "current_request"
+    ],
+    "sections": {
+      "current_request": {
+        "budget_chars": null,
+        "raw_chars": 76,
+        "rendered_chars": 76
+      },
+      "history": {
+        "budget_chars": 5200,
+        "raw_chars": 1206,
+        "rendered_chars": 1206
+      },
+      "memory": {
+        "budget_chars": 1600,
+        "raw_chars": 148,
+        "rendered_chars": 148
+      },
+      "prefix": {
+        "budget_chars": 3600,
+        "raw_chars": 5263,
+        "rendered_chars": 3600
+      },
+      "relevant_memory": {
+        "budget_chars": 1200,
+        "raw_chars": 23,
+        "rendered_chars": 23
+      }
+    },
+    "stale_paths": [],
+    "stale_summary_invalidations": 0,
+    "tool_count": 7,
+    "tool_signature": "4426765ffaaf28349778456b4696f3dae2f5ff87eb4b74ad4e8c4e86ee0437fb",
+    "total_tokens": 1679,
+    "workspace_changed": false,
+    "workspace_chars": 2404,
+    "workspace_docs": 2,
+    "workspace_fingerprint": "3f4b3c3706eff80473a5a2588807a7eecc206f03403b074b47dba1de6510c72c"
+  },
+  "redacted_env": {
+    "secret_env_count": 6,
+    "secret_env_names": [
+      "LANGSMITH_API_KEY",
+      "PICO_DEEPSEEK_API_KEY",
+      "PICO_VLLM_API_KEY",
+      "SILICONFLOW_API_KEY",
+      "SPARK_API_KEY",
+      "SPARK_API_SECRET"
+    ]
+  },
+  "resume_status": "no-checkpoint",
+  "run_id": "run_20260714-105446-acca91",
+  "status": "stopped",
+  "stop_reason": "step_limit_reached",
+  "task_id": "task_20260714-105446-d363e1",
+  "task_state": {
+    "attempts": 7,
+    "checkpoint_id": "ckpt_a2651234",
+    "final_answer": "Stopped after reaching the step limit without a final answer.",
+    "last_tool": "list_files",
+    "resume_status": "no-checkpoint",
+    "run_id": "run_20260714-105446-acca91",
+    "status": "stopped",
+    "stop_reason": "step_limit_reached",
+    "task_id": "task_20260714-105446-d363e1",
+    "tool_steps": 6,
+    "user_request": "\u5206\u6790\u5f53\u524d\u9879\u76ee\u76ee\u5f55\uff0c\u627e\u51fa\u6240\u6709\u7684Python\u6587\u4ef6\uff0c\u603b\u7ed3\u6bcf\u4e2a\u6587\u4ef6\u91cc\u5206\u522b\u5199\u4e86\u4ec0\u4e48\u529f\u80fd\uff0c\u5e76\u751f\u6210\u4e00\u4efdmarkdown\u62a5\u544a"
+  },
+  "tool_steps": 6
+}

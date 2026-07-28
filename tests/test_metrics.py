@@ -1,7 +1,7 @@
 import os
 from unittest.mock import patch
 
-from pico.evaluation.metrics import (
+from ellie.evaluation.metrics import (
     _provider_profile,
     run_context_ablation_v2,
     run_memory_ablation_v2,
@@ -30,9 +30,9 @@ def test_provider_profile_loads_project_env_before_reading_deepseek_config(tmp_p
     (tmp_path / ".env").write_text(
         "\n".join(
             [
-                "PICO_DEEPSEEK_API_KEY=sk-project-deepseek",
-                "PICO_DEEPSEEK_MODEL=deepseek-v4-pro",
-                "PICO_DEEPSEEK_API_BASE=https://api.deepseek.com/anthropic",
+                "ELLIE_DEEPSEEK_API_KEY=sk-project-deepseek",
+                "ELLIE_DEEPSEEK_MODEL=deepseek-v4-pro",
+                "ELLIE_DEEPSEEK_API_BASE=https://api.deepseek.com/anthropic",
             ]
         )
         + "\n",
@@ -59,7 +59,7 @@ def test_provider_profile_loads_project_env_before_reading_deepseek_config(tmp_p
 def test_provider_profile_uses_right_codes_shared_key_for_gpt(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
 
-    with patch.dict(os.environ, {"PICO_RIGHT_CODES_API_KEY": "sk-right-codes"}, clear=True):
+    with patch.dict(os.environ, {"ELLIE_RIGHT_CODES_API_KEY": "sk-right-codes"}, clear=True):
         profile = _provider_profile("gpt")
 
     assert profile["status"] == "ready"
@@ -112,7 +112,7 @@ def test_write_benchmark_core_report_marks_resume_safe_metrics(tmp_path):
         encoding="utf-8",
     )
 
-    report_path = tmp_path / "docs" / "metrics" / "pico-benchmark-core-report.md"
+    report_path = tmp_path / "docs" / "metrics" / "ellie-benchmark-core-report.md"
     report_text = write_benchmark_core_report(
         report_path=report_path,
         harness_artifact_path=harness_artifact_path,
@@ -126,3 +126,4 @@ def test_write_benchmark_core_report_marks_resume_safe_metrics(tmp_path):
     assert "只适合放文档/面试展开的指标" in report_text
     assert "resume_success_rate" in report_text
     assert "memory_hit_rate" in report_text
+
