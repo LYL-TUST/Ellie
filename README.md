@@ -23,6 +23,17 @@
 - 审批模式：`ask` / `auto` / `never` 三级控制高风险操作
 - 零外部依赖，纯标准库实现
 
+## 截图
+
+### 架构概览
+
+![Ellie 系统架构](assets/architecture.svg)
+
+### 终端交互
+
+![ellie 终端截图](assets/screenshots/ellie-terminal.png)
+
+
 ## 安装
 
 需要 Python 3.10+。
