@@ -53,3 +53,14 @@ docs/*
 
 # Packaging metadata
 ellie.egg-info/
+
+# Local run artifacts & sessions (never commit)
+.pico/
+.ellie/
+.workbuddy/
+
+# Scratch / test outputs at repo root
+/test_ask.json
+/ats_test.json
+/index.html
+ellie-test/
