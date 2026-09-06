@@ -683,10 +683,10 @@ def _provider_profile(provider):
     if provider == "gpt":
         api_key = provider_env(
             "ELLIE_OPENAI_API_KEY",
-            ("OPENAI_API_KEY", "ELLIE_RIGHT_CODES_API_KEY", "RIGHT_CODES_API_KEY", "ELLIE_ANTHROPIC_API_KEY", "ANTHROPIC_API_KEY"),
+            ("OPENAI_API_KEY", "ELLIE_ANTHROPIC_API_KEY", "ANTHROPIC_API_KEY"),
         )
         if not api_key:
-            return {"provider": provider, "status": "blocked", "reason": "ELLIE_OPENAI_API_KEY, OPENAI_API_KEY, or shared right.codes key missing"}
+            return {"provider": provider, "status": "blocked", "reason": "ELLIE_OPENAI_API_KEY or OPENAI_API_KEY missing"}
         return {
             "provider": provider,
             "status": "ready",
@@ -716,7 +716,7 @@ def _provider_profile(provider):
         }
     api_key = provider_env(
         "ELLIE_ANTHROPIC_API_KEY",
-        ("ANTHROPIC_API_KEY", "ELLIE_RIGHT_CODES_API_KEY", "RIGHT_CODES_API_KEY", "ELLIE_OPENAI_API_KEY", "OPENAI_API_KEY"),
+        ("ANTHROPIC_API_KEY", "ELLIE_OPENAI_API_KEY", "OPENAI_API_KEY"),
     )
     if not api_key:
         return {"provider": "claude", "status": "blocked", "reason": "ELLIE_ANTHROPIC_API_KEY or ANTHROPIC_API_KEY missing"}
@@ -724,7 +724,7 @@ def _provider_profile(provider):
         "provider": "claude",
         "status": "ready",
         "model": provider_env("ELLIE_ANTHROPIC_MODEL", ("ANTHROPIC_MODEL",), "claude-sonnet-4-6"),
-        "base_url": provider_env("ELLIE_ANTHROPIC_API_BASE", ("ANTHROPIC_API_BASE",), "https://www.right.codes/claude/v1"),
+        "base_url": provider_env("ELLIE_ANTHROPIC_API_BASE", ("ANTHROPIC_API_BASE",), "https://api.anthropic.com"),
         "api_key": api_key,
     }
 

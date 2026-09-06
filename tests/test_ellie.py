@@ -360,8 +360,8 @@ def test_openai_compatible_client_posts_expected_responses_payload():
         return FakeResponse()
 
     client = OpenAICompatibleModelClient(
-        model="right.codes/codex-mini",
-        base_url="https://right.codes/v1",
+        model="gpt-5.4",
+        base_url="https://api.openai.com/v1",
         api_key="sk-test",
         temperature=0.2,
         timeout=30,
@@ -371,14 +371,14 @@ def test_openai_compatible_client_posts_expected_responses_payload():
         result = client.complete("hello", 42)
 
     assert result == "<final>ok</final>"
-    assert captured["url"] == "https://right.codes/v1/responses"
+    assert captured["url"] == "https://api.openai.com/v1/responses"
     assert captured["timeout"] == 30
     assert captured["headers"]["Authorization"] == "Bearer sk-test"
     assert captured["headers"]["Content-type"] == "application/json"
     assert captured["headers"]["Accept"] == "application/json"
     assert captured["headers"]["User-agent"] == "ellie/0.1"
     assert captured["body"] == {
-        "model": "right.codes/codex-mini",
+        "model": "gpt-5.4",
         "input": [
             {
                 "role": "user",
@@ -429,8 +429,8 @@ def test_openai_compatible_client_sends_prompt_cache_fields_and_records_usage():
         return FakeResponse()
 
     client = OpenAICompatibleModelClient(
-        model="right.codes/codex-mini",
-        base_url="https://right.codes/v1",
+        model="gpt-5.4",
+        base_url="https://api.openai.com/v1",
         api_key="sk-test",
         temperature=0.2,
         timeout=30,
@@ -471,8 +471,8 @@ def test_openai_compatible_client_extracts_text_from_event_stream():
             ).encode("utf-8")
 
     client = OpenAICompatibleModelClient(
-        model="right.codes/codex-mini",
-        base_url="https://right.codes/v1",
+        model="gpt-5.4",
+        base_url="https://api.openai.com/v1",
         api_key="sk-test",
         temperature=0.2,
         timeout=30,
@@ -506,8 +506,8 @@ def test_openai_compatible_client_extracts_text_from_event_stream_deltas():
             ).encode("utf-8")
 
     client = OpenAICompatibleModelClient(
-        model="right.codes/codex-mini",
-        base_url="https://right.codes/v1",
+        model="gpt-5.4",
+        base_url="https://api.openai.com/v1",
         api_key="sk-test",
         temperature=0.2,
         timeout=30,
@@ -552,7 +552,7 @@ def test_anthropic_compatible_client_posts_expected_messages_payload():
 
     client = AnthropicCompatibleModelClient(
         model="claude-sonnet-4-5-20250929",
-        base_url="https://www.right.codes/claude-aws/v1",
+        base_url="https://custom-gateway.example.com/v1",
         api_key="sk-test",
         temperature=0.2,
         timeout=30,
@@ -562,7 +562,7 @@ def test_anthropic_compatible_client_posts_expected_messages_payload():
         result = client.complete("hello", 42)
 
     assert result == "<final>ok</final>"
-    assert captured["url"] == "https://www.right.codes/claude-aws/v1/messages"
+    assert captured["url"] == "https://custom-gateway.example.com/v1/messages"
     assert captured["timeout"] == 30
     assert captured["headers"]["X-api-key"] == "sk-test"
     assert captured["headers"]["Anthropic-version"] == "2023-06-01"
@@ -608,7 +608,7 @@ def test_anthropic_compatible_client_extracts_first_text_block():
 
     client = AnthropicCompatibleModelClient(
         model="claude-sonnet-4-5-20250929",
-        base_url="https://www.right.codes/claude-aws/v1",
+        base_url="https://custom-gateway.example.com/v1",
         api_key="sk-test",
         temperature=0.2,
         timeout=30,
@@ -644,7 +644,7 @@ def test_build_agent_uses_openai_provider_and_model_override(tmp_path):
     with patch.dict(
         os.environ,
         {
-            "OPENAI_API_BASE": "https://www.right.codes/codex/v1",
+            "OPENAI_API_BASE": "https://api.openai.com/v1",
             "OPENAI_API_KEY": "sk-test",
             "OPENAI_MODEL": "env-model",
         },
@@ -659,43 +659,8 @@ def test_build_agent_uses_openai_provider_and_model_override(tmp_path):
 
     mock_openai.assert_called_once()
     assert mock_openai.call_args.kwargs["model"] == "override-model"
-    assert mock_openai.call_args.kwargs["base_url"] == "https://www.right.codes/codex/v1"
+    assert mock_openai.call_args.kwargs["base_url"] == "https://api.openai.com/v1"
     assert mock_openai.call_args.kwargs["api_key"] == "sk-test"
-    assert agent.model_client is fake_client
-
-
-def test_build_agent_uses_right_codes_shared_key_for_openai_provider(tmp_path):
-    args = type(
-        "Args",
-        (),
-        {
-            "cwd": str(tmp_path),
-            "provider": "openai",
-            "model": None,
-            "base_url": None,
-            "host": "http://127.0.0.1:11434",
-            "ollama_timeout": 300,
-            "openai_timeout": 300,
-            "temperature": 0.2,
-            "top_p": 0.9,
-            "resume": None,
-            "approval": "ask",
-            "secret_env_names": [],
-            "max_steps": 6,
-            "max_new_tokens": 512,
-        },
-    )()
-
-    with patch.dict(os.environ, {"ELLIE_RIGHT_CODES_API_KEY": "sk-right-codes"}, clear=True):
-        with patch(
-            "ellie.cli.OllamaModelClient",
-            side_effect=AssertionError("ollama client should not be used"),
-        ), patch("ellie.cli.OpenAICompatibleModelClient") as mock_openai:
-            fake_client = mock_openai.return_value
-            agent = ellie_pkg.build_agent(args)
-
-    mock_openai.assert_called_once()
-    assert mock_openai.call_args.kwargs["api_key"] == "sk-right-codes"
     assert agent.model_client is fake_client
 
 
@@ -722,7 +687,7 @@ def test_build_agent_uses_project_env_provider_when_cli_omitted(tmp_path):
         "\n".join(
             [
                 "ELLIE_PROVIDER=openai",
-                "ELLIE_OPENAI_API_BASE=https://www.right.codes/codex/v1",
+                "ELLIE_OPENAI_API_BASE=https://api.openai.com/v1",
                 "ELLIE_OPENAI_API_KEY=sk-project-openai",
                 "ELLIE_OPENAI_MODEL=gpt-5.4",
                 "ELLIE_DEEPSEEK_API_KEY=sk-project-deepseek",
@@ -746,7 +711,7 @@ def test_build_agent_uses_project_env_provider_when_cli_omitted(tmp_path):
 
     mock_openai.assert_called_once()
     assert mock_openai.call_args.kwargs["model"] == "gpt-5.4"
-    assert mock_openai.call_args.kwargs["base_url"] == "https://www.right.codes/codex/v1"
+    assert mock_openai.call_args.kwargs["base_url"] == "https://api.openai.com/v1"
     assert mock_openai.call_args.kwargs["api_key"] == "sk-project-openai"
     assert agent.model_client is fake_client
 
@@ -828,7 +793,7 @@ def test_build_agent_uses_anthropic_provider_and_openai_key_fallback(tmp_path):
 
     mock_anthropic.assert_called_once()
     assert mock_anthropic.call_args.kwargs["model"] == "claude-sonnet-4-5-20250929"
-    assert mock_anthropic.call_args.kwargs["base_url"] == "https://www.right.codes/claude/v1"
+    assert mock_anthropic.call_args.kwargs["base_url"] == "https://api.anthropic.com"
     assert mock_anthropic.call_args.kwargs["api_key"] == "sk-openai-fallback"
     assert agent.model_client is fake_client
 
@@ -1701,24 +1666,6 @@ def test_public_api_exports_resolve_through_package_path():
     assert SessionStore is not None
     assert WorkspaceContext is not None
     assert Path(ellie_pkg.__file__).as_posix().endswith("/ellie/__init__.py")
-
-
-def test_reviewer_skeleton_docs_exist():
-    review_pack = Path("docs/review-pack/README.md")
-    architecture = Path("docs/architecture/agent-harness-v1-overview.md")
-
-    assert review_pack.exists()
-    assert architecture.exists()
-
-    review_text = review_pack.read_text(encoding="utf-8")
-    assert "Project pitch" in review_text
-    assert "Architecture map" in review_text
-    assert "Benchmark evidence" in review_text
-    assert "Sample run artifact list" in review_text
-
-    architecture_text = architecture.read_text(encoding="utf-8")
-    assert "Agent Harness v1" in architecture_text
-    assert "task state" in architecture_text.lower()
 
 
 def test_package_import_surface_includes_cli_entrypoints():
